@@ -7,8 +7,10 @@
   "private": true,
   "scripts": {
     "test": "live-server --open=./SpecRunner.html --port=8081",
+    "start":  "npm install -g babel-cli -c babel . --watch --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline -c npm install -g live-server",
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
   },
+  
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.2",
     "jquery": "^2.2.1",
