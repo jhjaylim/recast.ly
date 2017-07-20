@@ -1,5 +1,5 @@
 class App extends React.Component {
-  // this.prop.data is array of videos
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class App extends React.Component {
     };
 
   }
-  // somekind of function that window.exampleVideoData = parsedresposen
+  
   render() {
     return (
       <div>

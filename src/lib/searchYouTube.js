@@ -1,13 +1,4 @@
 var searchYouTube = (options, callback) => {
-    
-  // var options = options.map(function(ops){
-
-  //   q: ops.query, 
-  //   max: ops.maxResult
-
-  // });
-  
-  
   
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
@@ -16,7 +7,7 @@ var searchYouTube = (options, callback) => {
     contentType: 'application/json',
     success: function (data) {
       callback(data);
-      console.log('Success!', $(data)[0].items);
+      console.log('Success!');
     },
     error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -25,4 +16,4 @@ var searchYouTube = (options, callback) => {
   });
 };
 
-window.searchYouTube = searchYouTube;
+window.searchYouTube = _.debounce(searchYouTube, 500);
