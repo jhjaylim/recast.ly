@@ -12,11 +12,10 @@ class App extends React.Component {
         videos: $(event)[0].items
       });
     };
-    this.onClickTitle = (event) => {
-      console.log($(event.target));      
-      // this.setState({
-      //   selected: 
-      // });
+    this.onClickTitle = (video) => {
+      this.setState({
+        selected: video
+      });
     };
 
   }

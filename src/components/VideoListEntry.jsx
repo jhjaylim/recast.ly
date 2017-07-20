@@ -1,8 +1,7 @@
 var VideoListEntry = (props) => {
   
   var onClickHandler = (event) => {
-    console.log(event.target);
-    props.handler(event);
+    props.handler(props.video);
   };
    
   return (
