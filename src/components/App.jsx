@@ -1,31 +1,51 @@
 class App extends React.Component {
   // this.prop.data is array of videos
   constructor(props) {
-    super(props); 
+    super(props);
+    this.state = {
+      videos: window.exampleVideoData,
+      selected: window.exampleVideoData[0]
+      
+    };
+    this.onClickSearch = (event) => {
+      this.setState({
+        videos: $(event)[0].items
+      });
+    };
+    this.onClickTitle = (event) => {
+      console.log($(event.target));      
+      // this.setState({
+      //   selected: 
+      // });
+    };
+
   }
-  render() { 
+  // somekind of function that window.exampleVideoData = parsedresposen
+  render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <div>
-              <Search />
+              <Search handler={this.onClickSearch} />
             </div>
           </div>
         </nav>
-      <div className="row">
-        <div className="col-md-7">
-          <div>
-            <VideoPlayer />
+        <div className="row">
+          <div className="col-md-7">
+            
+            <div>
+              <VideoPlayer video={this.state.selected} />
+              
+            </div>
           </div>
-        </div>
-        <div className="col-md-5">
-          <div>
-            <VideoList videos={this.props.data}/>
+          <div className="col-md-5">
+            <div>
+              <VideoList videos={this.state.videos} handler={this.onClickTitle}/>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
   
