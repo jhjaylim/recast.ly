@@ -2,14 +2,17 @@ class App extends React.Component {
   
   constructor(props) {
     super(props);
+    
     this.state = {
-      videos: window.exampleVideoData,
-      selected: window.exampleVideoData[0]
+      videos: [],
+      selected: null
       
     };
+
     this.onClickSearch = (event) => {
       this.setState({
-        videos: $(event)[0].items
+        videos: $(event)[0].items,
+        selected: $(event)[0].items[0]
       });
     };
     this.onClickTitle = (video) => {
@@ -18,6 +21,26 @@ class App extends React.Component {
       });
     };
 
+
+  }
+  componentDidMount() {
+    this.props.searchYouTube({
+      'key': YOUTUBE_API_KEY,
+      'maxResults': 5,
+      'part': 'snippet', 
+      'q': '',
+      'type': 'video',
+      'videoEmbeddable': 'true'
+
+
+    }, (event) => {
+      this.setState({
+        videos: $(event)[0].items,
+        selected: $(event)[0].items[0]
+
+      });
+
+    });
   }
   
   render() {

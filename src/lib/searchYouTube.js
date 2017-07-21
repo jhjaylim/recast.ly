@@ -16,4 +16,4 @@ var searchYouTube = (options, callback) => {
   });
 };
 
-window.searchYouTube = _.debounce(searchYouTube, 500);
+window.searchYouTube = _.debounce(searchYouTube, 5000);
